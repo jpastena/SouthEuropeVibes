@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from "@angular/common/http";
 
 import { EmployeeListService } from "./services/employee-list.service";
+import { PostVisitService } from "./services/post-visit.service";
 
 
 
@@ -26,7 +27,8 @@ import { EmployeeListService } from "./services/employee-list.service";
     HttpClientModule
   ],
   providers: [
-    EmployeeListService
+    EmployeeListService,
+    PostVisitService
   ],
   bootstrap: [AppComponent]
 })

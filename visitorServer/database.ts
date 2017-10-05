@@ -41,6 +41,24 @@ export class MyDatabase {
             })
         });
     }
+
+    postVisit(guest: string, employee: string, time: Date) {
+        return new Promise((resolve, reject) => {
+            let q: string = 'INSERT INTO Visit Values (?,?,?)';
+            let stmt: Statement = this.database.prepare(q)
+            stmt.run([guest,employee,time], (err) => {
+                if(err){
+                    reject(err);
+                }
+            });
+            stmt.finalize((err) => {
+                if(err){
+                    reject(err);
+                }
+            });
+            resolve();
+        });
+    }
 }
 
 

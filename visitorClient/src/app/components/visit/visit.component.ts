@@ -6,6 +6,9 @@ import { Dropdown } from "./dropdown";
 
 import { EmployeeListService } from "../../services/employee-list.service";
 import { Employee } from "../../services/employee";
+import { PostVisitService } from "../../services/post-visit.service";
+import { Visit } from "../../services/visit";
+
 
 @Component({
   selector: 'app-visit',
@@ -22,10 +25,11 @@ export class VisitComponent implements OnInit {
   protected employees: Employee[];
   
   protected employeeListService: EmployeeListService;
+  protected postVisitService: PostVisitService;
 
 
 
-  constructor( service: EmployeeListService ) {
+  constructor( service: EmployeeListService, servicePost: PostVisitService ) {
    
     this.hours = this.d.hourList; 
     this.minutes = this.d.minuteList;
@@ -35,14 +39,17 @@ export class VisitComponent implements OnInit {
     this.employeeListService = service;
     this.employeeListService.fetchEmployees().subscribe((val: Employee[] ) => { this.employees = val });
     
+    this.postVisitService = servicePost;
 
   }
 
   ngOnInit() {
   }
 
-  book(){
-    console.log("BUTTON!!!!");
+  notify() {
+    this.postVisitService.postVisit();
   }
+
+  
 }
 

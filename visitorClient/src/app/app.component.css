@@ -1,0 +1,14 @@
+.companyTitle{
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    transition: background-image 0.7s;
+    -webkit-transition: background-image 0.7s;
+    -moz-transition: background-image 0.7s;
+    -o-transition: background-image 0.7s;
+    width: 566px;
+    padding-top: 2px;
+    font-size: 1.5em;
+    background-image: url('http://www.geertjanhendriks.nl/codepen/form/pixel.gif'); 
+    font-family: 'Sniglet', cursive;
+    color: #676767;
+    }

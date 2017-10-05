@@ -1,0 +1,49 @@
+<header>
+	<h1>Welcome!</h1>
+</header>
+
+<div id="form">
+
+<div class="fish" id="fish"></div>
+<div class="fish" id="fish2"></div>
+
+<form id="waterform" method="post">
+
+<div class="formgroup" >
+    <label for="guest">Your name*</label>
+    <input type="text" id="guest" guest="guest" placeholder="Please, insert your name" />
+    
+</div>
+
+<div class="formgroup">
+  <label for="employee">Your host*
+    <select class="myDropdown" onmousedown="if(this.options.length>8){this.size=5;}" onchange='this.size=0;' onblur="this.size=0;" >
+        <option *ngFor="let employee of employees">{{employee.name}}</option>
+    </select>
+  </label>
+</div>
+
+<div>
+<label for="email">Time of your date?
+<select class="myDropdown" name="selectHours" onmousedown="if(this.options.length>8){this.size=5;}" onchange='this.size=0;' onblur="this.size=0;" >
+  <option *ngFor="let hour of d.hourList">{{hour}}</option>
+
+</select>
+<select class="myDropdown"  name="selectMinutes" onmousedown="if(this.options.length>8){this.size=5;}" onchange='this.size=0;' onblur="this.size=0;">
+    <option  *ngFor="let minute of d.minuteList">{{minute}}</option>
+</select>
+</label>
+<span class="mySpan"> HH   :    MM </span>
+</div>
+
+
+<div class="formgroup">
+    <label for="message">Your message</label>
+    <textarea id="message" name="message" placeholder="Feel free to leave a message..."></textarea>
+</div>
+
+<input type="submit" value="Notify your host!" />
+
+<div> dude im crazy {{employees | json }} </div>
+</form>
+</div>

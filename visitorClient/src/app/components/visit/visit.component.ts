@@ -32,6 +32,7 @@ export class VisitComponent implements OnInit {
   protected selectEmployee : string;
   protected selectHours : number;
   protected selectMinutes : number;
+  protected vis ;
 
 
 
@@ -54,7 +55,12 @@ export class VisitComponent implements OnInit {
   }
 
   notify() {
-    this.postVisitService.postVisit(this.guest, this.selectEmployee, this.date);
+    
+    this.postVisitService.postVisit(this.guest, this.selectEmployee, this.date)
+    .subscribe((result)=> { 
+      this.vis = result;
+      console.log(this.vis)})
+    
     console.log(this.guest);
     console.log(this.selectEmployee);
     console.log(this.selectHours + ":" + this.selectMinutes);

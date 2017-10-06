@@ -79,7 +79,31 @@ app.post('/api/visit', function (req, res) {
     db.postVisit(guest,employee,date)
         .then( () => { 
             console.log("post is successful");
-            res.send("OK");
+            let transporter: Transporter = nodemailer.createTransport({
+              service: 'gmail',
+              auth: {
+                user: 'southeuropevibes@gmail.com',
+                pass: 'vibes12345'
+              }
+            });
+            
+            let mailOptions: SendMailOptions = {
+              from: 'southeuropevibes@gmail.com',
+              to: employee,
+              subject: 'New visitor | Europe South Vibes',
+              text: 'Lovely is waiting for you! He has a message for you!'
+            };
+            
+            transporter.sendMail(mailOptions, function(error, info){
+              if (error) {
+                console.log(error);
+                res.send("ERROR");
+              } else {
+                console.log('Email sent: ' + info.response);
+                res.json({result: "OK"});
+              }
+            });
+           
         })
         .catch( (err: Error) => {
             console.log("ERROR: ", err);

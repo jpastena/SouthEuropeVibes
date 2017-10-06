@@ -9,18 +9,14 @@ export class PostVisitService {
 
   protected http: HttpClient;
   protected url: string = '/api/visit';
-  protected body: {
-    guest: "TryName",
-    employee: "jac@jac.it",
-    date: "10 Oct 2019"
-  }
+ 
   
   constructor(http: HttpClient) {
     this.http = http;
   }
-  postVisit() {
+  postVisit( guest, employee, date) {
     console.log("Your host is notified! Cheers")
-    this.http.post(this.url, this.body)
+    this.http.post(this.url, {guest, employee, date })
     .subscribe();
   }
 }

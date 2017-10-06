@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from "@angular/forms";
+import {NgForm} from '@angular/forms';
 import { Observable } from "rxjs/observable";
 
 import { Dropdown } from "./dropdown";
@@ -20,12 +21,19 @@ export class VisitComponent implements OnInit {
   protected d: Dropdown = new Dropdown();
   protected hours: Array<number>;
   protected minutes: Array<number>;
-  protected date: Date;
+  protected date: Date = new Date();
   protected message: string;
   protected employees: Employee[];
   
   protected employeeListService: EmployeeListService;
   protected postVisitService: PostVisitService;
+
+  protected guest : string;
+  protected selectEmployee : string;
+  protected selectHours : number;
+  protected selectMinutes : number;
+
+
 
 
 
@@ -33,8 +41,7 @@ export class VisitComponent implements OnInit {
    
     this.hours = this.d.hourList; 
     this.minutes = this.d.minuteList;
-    // this.date = new Date();
-    // this.message = this.message;
+    this.message = this.message;
 
     this.employeeListService = service;
     this.employeeListService.fetchEmployees().subscribe((val: Employee[] ) => { this.employees = val });
@@ -47,7 +54,11 @@ export class VisitComponent implements OnInit {
   }
 
   notify() {
-    this.postVisitService.postVisit();
+    this.postVisitService.postVisit(this.guest, this.selectEmployee, this.date);
+    console.log(this.guest);
+    console.log(this.selectEmployee);
+    console.log(this.selectHours + ":" + this.selectMinutes);
+    console.log(this.message);
   }
 
   

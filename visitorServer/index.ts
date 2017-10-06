@@ -37,6 +37,12 @@ app.post('/api/visit', function (req, res) {
     let guest = req.body.guest;
     let employee = req.body.employee;
     let date = req.body.date;
+
+    console.log("--- a post request is coming ---");
+    console.log("guest", guest);
+    console.log("employee", employee);
+    console.log("date", date);
+
     db.postVisit(guest,employee,date)
         .then( () => { console.log("post is successful") } )
         .catch( (err: Error) => { console.log("ERROR: ", err) } );

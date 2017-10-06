@@ -9,7 +9,7 @@ export class PostVisitService {
 
   protected http: HttpClient;
   protected url: string = '/api/visit';
-  protected body: {
+  protected body = {
     guest: "TryName",
     employee: "jac@jac.it",
     date: "10 Oct 2019"
